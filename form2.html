@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form2</title>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <h2>Problem 1</h2>
+        <form method="POST">
+            Username: <input type="text" name="username" /><br />
+            Password: <input type="password" name="password" /><br />
+            Email: <input type="email" name="email" /><br />
+            Website: <input type="url" name="Website" /><br />
+            Age: <input type="number" name="age" min="0" max="120" /><br />
+            Deadline: <input type="datetime" name="ddl" /><br />
+            Favorite Color: <input type="color" name="color" /><br />
+            <button type="submit">Submit</button> &nbsp;&nbsp;<button type="reset">Reset</button><br />
+        </form>
+        <h2>Problem 2</h2>
+        <form>
+            Email: <input type="email" name="email2" required /><br />
+            Number (0-100): <input type="text" name="number2" pattern="[0-9]{0,1}?[0|2|4|6|8]" /><br />
+            City: <datalist><option value="北京"><option value="上海"><option value="广州"><option value="深圳"></datalist><br />
+            <button type="submit">Submit</button> &nbsp;&nbsp;<button type="reset">Reset</button><br />
+        </form>
+    </body>
+</html>
