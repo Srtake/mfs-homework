@@ -20,7 +20,7 @@
         <form>
             Email: <input type="email" name="email2" required /><br />
             Number (0-100): <input type="text" name="number2" pattern="[0-9]{0,1}?[0|2|4|6|8]" /><br />
-            City: <datalist><option value="北京"><option value="上海"><option value="广州"><option value="深圳"></datalist><br />
+            City: <input list="cities"><datalist id="cities"><option value="北京"><option value="上海"><option value="广州"><option value="深圳"></datalist><br />
             <button type="submit">Submit</button> &nbsp;&nbsp;<button type="reset">Reset</button><br />
         </form>
     </body>
