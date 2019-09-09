@@ -24,22 +24,25 @@
                 color: red;
             }
             .link1, .link2 {
-                color: white;
-            }
-            .left:hover .nav1, .left:hover .link1 {
+                visibility: hidden;
                 color: red;
+            }
+            .left:hover .link1 {
+                visibility: visible;
             }
             .nav2:hover~.link2 {
-                color: red;
+                visibility: visible;
             }
         </style>
     </head>
     <body>
        <div class="left">
            <div class="nav1">导航1</div>
-           <p class="link1">链接1.1</p>
-           <p class="link1">链接1.2</p>
-           <p class="link1">链接1.3</p>
+           <div class="link1">
+           <p>链接1.1</p>
+           <p>链接1.2</p>
+           <p>链接1.3</p>
+           </div>
        </div>
        <div class="right">
            <div class="nav2">导航2</div>
