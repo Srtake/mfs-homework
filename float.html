@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Float</title>
+        <meta charset="utf-8">
+        <style>
+            ul {
+                margin-left: 42em;
+                padding: 0;
+                list-style-type: none;
+            }
+            a {
+                text-align: center;
+                float: left;
+                width: 7em;
+                text-decoration: none;
+                color: white;
+                background-color: black;
+                padding: 0.2em 0.6em;
+            }
+            a:hover {
+                color: gray;
+            }
+            .menutrig:hover~.menu {
+                visibility: visible;
+            }
+            .menu {
+                visibility: hidden;
+            }
+            .menuitem {
+                text-align: left;
+                display: block;
+                clear: left;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#">蚂蜂社</a>
+        <a href="#">首页</a>
+        <a href="#">基础闯关班</a>
+        <a href="#">Web 闯关班</a>
+        <a href="#">课程选择</a>
+        <a href="#" class="menutrig">社区</a>
+        <a href="#">关于我们</a>
+        <div class="menu">
+            <ul>
+                <li><a href="#" class="menuitem">论坛</a></li>
+                <li><a href="#" class="menuitem">闯关任务</a></li>
+            </ul>
+        </div>
+    </body>
+</html>
