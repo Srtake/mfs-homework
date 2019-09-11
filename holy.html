@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HolyGrail Layout</title>
+        <style>
+            .HolyGrail {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            header,
+            footer {
+                flex: auto;
+                background-color: gray;
+            }
+
+            .HolyGrail-body {
+                display: flex;
+                flex: auto;
+                background-color:turquoise;
+            }
+
+            .HolyGrail-content {
+                display: flex;
+                flex: auto;
+                height: 550px;
+                background-color:turquoise;
+            }
+
+            .HolyGrail-nav, .HolyGrail-ads {
+                flex: 0 0 12em;
+                background-color:salmon;
+            }
+            .HolyGrail-nav {
+                order: -1;
+            }
+            .first-face {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .dice {
+                margin: 16px;
+                padding: 4px;
+                background-color: #e7e7e7;
+                width: 104px;
+                height: 104px;
+                object-fit: contain;
+                box-shadow:
+                    inset 0 5px white, 
+                    inset 0 -5px #bbb,
+                    inset 5px 0 #d7d7d7, 
+                    inset -5px 0 #d7d7d7;
+                border-radius: 10%;
+            }
+            .pip {
+                display: block;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                margin: 4px;
+                background-color: #333;
+                box-shadow: inset 0 3px #111, inset 0 -3px #555;
+            }
+            .second-face, .third-face, .fourth-face, .fifth-face, .sixth-face {
+                display: flex;
+                justify-content: space-between;
+            }
+            .second-face .pip:nth-of-type(2),
+            .third-face .pip:nth-of-type(3) {
+                align-self: flex-end;
+            }
+            .third-face .pip:nth-of-type(2), .center{
+                align-self: center;
+            }
+            .column {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        </style>
+    </head>
+    <body class="HolyGrail">
+        <header></header>
+        <div class="HolyGrail-body">
+            <main class="HolyGrail-content">
+                <div class="dice first-face">
+                    <span class="pip"></span>
+                </div>
+                <div class="dice second-face">
+                    <span class="pip"></span>
+                    <span class="pip"></span>
+                </div>
+                <div class="dice third-face">
+                    <span class="pip"></span>
+                    <span class="pip"></span>
+                    <span class="pip"></span>
+                </div>
+                <div class="dice fourth-face">
+                    <div class="column">
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                    </div>
+                    <div class="column">
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                    </div>
+                </div>
+                <div class="dice fifth-face">
+                    <div class="column">
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                    </div>
+                    <div class="column center">
+                        <span class="pip"></span>
+                    </div>
+                    <div class="column">
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                    </div>
+                </div>
+                <div class="dice sixth-face">
+                    <div class="column">
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                    </div>
+                    <div class="column">
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                        <span class="pip"></span>
+                    </div>
+                </div>
+            </main>
+            <nav class="HolyGrail-nav"></nav>
+            <aside class="HolyGrail-ads"></aside>
+        </div>
+        <footer></footer>
+    </body>
+</html>
