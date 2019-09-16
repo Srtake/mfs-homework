@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MEDIA</title>
+    </head>
+    <style>
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+        
+        .nav a, .nav span {
+            border-bottom: 1px solid rgb(215,215,215);
+            background-color: rgb(235, 235, 235);
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            float: left;
+            width: 7em;
+            padding: 0.2em 0.6em;
+            height: 1.2em;
+        }
+        .java {
+            visibility: hidden;
+            display: block;
+            margin-left: 24em;
+        }
+        .java a {
+            background-color: rgb(235, 235, 235);
+            width: 12em;
+            text-align: left;
+            display: block;
+            clear: left;
+        }
+        .nav .gap {
+            padding: 0.8em 0.6em;
+            border-top: 1px solid rgb(215,215,215);
+        }
+        .nav span:hover~.java {
+            visibility: visible;
+        }
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            clear: left;
+        }
+        .flex div, .float div {
+            border: 2px solid black;
+        }
+        .float div {
+            float: left;
+        }
+        @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        .java {
+            margin-left: 0;
+        }
+        [class*="col-"], .nav a, .nav span, .java a {
+            width: 100%;
+        }
+    }
+    </style>
+    <body>
+        <nav class="nav">
+            <a href="https://www.runoob.com/try/try2.php?filename=bootstrap3-navbar-default#">菜鸟教程</a>
+            <a href="https://www.runoob.com/try/try2.php?filename=bootstrap3-navbar-default#">IOS</a>
+            <a href="https://www.runoob.com/try/try2.php?filename=bootstrap3-navbar-default#">SVN</a>
+            <span>JAVA</span>
+        
+        <div class="java">
+                <a href="https://www.runoob.com/try/try.php?filename=bootstrap3-navbar-default#">jmeter</a>
+                <a href="https://www.runoob.com/try/try.php?filename=bootstrap3-navbar-default#">EJB</a>
+                <a href="https://www.runoob.com/try/try.php?filename=bootstrap3-navbar-default#">Jasper Report</a>
+                <a href="https://www.runoob.com/try/try.php?filename=bootstrap3-navbar-default#" class="gap">分离的链接</a>
+                <a href="#" class="gap">另一个分离的链接</a>
+        </div>
+        </nav>
+        <div class="flex">
+            <div class="col-3">
+                <h3>我是标题。</h3>
+                <h3>我是标题。</h3>
+                <h3>我是标题。</h3>
+                <h3>我是标题。</h3>
+                <h3>我是标题。</h3>
+            </div>
+            <div class="col-3">
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+            </div>
+            <div class="col-3">
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+                    <h3>我是标题。</h3>
+            </div>
+        </div>
+        <div class="float">
+                <div class="col-3">
+                        <h3>我是标题。</h3>
+                        <h3>我是标题。</h3>
+                        <h3>我是标题。</h3>
+                        <h3>我是标题。</h3>
+                        <h3>我是标题。</h3>
+                    </div>
+                    <div class="col-3">
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                    </div>
+                    <div class="col-3">
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                            <h3>我是标题。</h3>
+                    </div>
+        </div>
+    </body>
+</html>
