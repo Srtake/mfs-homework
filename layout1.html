@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LAYOUT - 1</title>
+        <meta charset="utf-8">
+        <style>
+            .main {        
+                float: left;       
+                width: 100%;   
+                background-color: aqua;
+                height: 20em;
+             }  
+            .sub {       
+                float: left;        
+                width: 190px;        
+                margin-left: -100%;               
+                position: relative;  
+                left: -190px;  
+                background-color: aquamarine;
+                height: 20em;
+            }   
+            .extra {        
+                float: left;        
+                width: 230px;        
+                margin-left: -230px; 
+                position: relative; 
+                right: -230px;  
+                background-color: darksalmon;
+                height: 20em;
+            }
+            .bd-float {        
+                padding: 0 230px 0 190px;
+            }
+            .col-3 {
+                float: left;
+                width: 33%;
+                height: 20em;
+                border: 1px solid black;
+            }
+
+            .item1 {
+                text-align: center;
+                line-height: 20em;
+            }
+            .method-2 {
+                float: left;
+                width: 33%;
+                height: 20em;
+                border: 1px solid black;
+                position: relative;
+            }
+            .flex { display: flex; 
+                    width: 33%;
+                    height: 20em;
+                    border: 1px solid black;
+                    justify-content: center;
+                    align-items: center;
+                }
+            .item2 {
+                width: 6em;
+                height: 1em;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            .gap {
+                clear: left;
+                border-bottom: 10px solid black;
+            }
+            .bd-flex {
+                display: flex;
+                flex: auto;
+                background-color:turquoise;
+            }
+            .main-flex {
+                display: flex;
+                flex: auto;
+                height: 550px;
+                background-color:turquoise;
+            }
+            .sub-flex, .extra-flex {
+                flex: 0 0 12em;
+                background-color:salmon;
+            }
+            .sub-flex {
+                order: -1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bd-float">
+            <div class="main">
+                <div class="content">
+                <div class="col-3">
+                    <div class="item1">这里是</div>
+                </div>
+                <div class="method-2">
+                        <div class="item2">使用 float 实现的</div>
+                </div>
+                <div class="flex">
+                        <div class="item3">圣杯布局</div>
+                </div>
+                </div>
+            </div>
+            <div class="sub">
+                <p>我是内容。</p>
+                <p>我是内容。</p>
+                <p>我是内容。</p>
+                <p>我是内容。</p>
+                <p>我是内容。</p>
+            </div>
+            <div class="extra">
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+            </div>
+        </div>
+        <div class="gap">  </div>
+        <div class="bd-flex">
+            <div class="main-flex">
+                    <p>这里是使用 flex 实现的圣杯布局。</p>
+            </div>
+            <div class="sub-flex">
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+            </div>
+            <div class="extra-flex">
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+                    <p>我是内容。</p>
+            </div>
+        </div>
+    </body>
+</html>
