@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ANIMATION</title>
+        <meta charset="utf-8">
+        <style>
+            ul {
+                margin: 0;
+                position: absolute;
+                padding: 0;
+                list-style-type: none;
+            }
+            .menu a {
+                text-align: left;
+            }
+            .nav {
+                position: fixed;
+                top: 0px;
+                left: 200px;
+            }
+            a, .menu {
+                text-align: center;
+                float: left;
+                width: 7em;
+                text-decoration: none;
+                color: white;
+                background-color: black;
+                transition: background-color 1s, color 1s;
+                padding: 0.2em 0.6em;
+            }
+            .menu ul {
+                height: 0;
+            }
+            .menu .menuitem {
+                height: 0;
+                padding: 0;
+                transition: height .5s;
+            }
+            .menu:hover .menuitem {
+                height: 2em;
+            }
+            a:hover {
+                color: black;
+                background-color: yellow;
+            }
+            .anime-loader {
+                animation: rotate-animation 2.5s linear infinite;
+                display: block;
+                width: 64px;
+                height: 64px;
+                margin-left: -32px;
+                margin-top: 0px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform-origin: 16px 16px;
+                animation: rotate-animation 5s linear infinite;
+            }
+            .circle-line {
+                width: 64px;
+                height: 24px;
+                position: absolute;
+                top: 4px;
+                left: 0;
+                transform-origin: 4px 4px;
+            }
+            @keyframes rotate-animation {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            @keyframes move-animation {
+                0% { transform: translate(0, 0); }
+                25% { transform: translate(-64px, 0); }
+                75% { transform: translate(32px, 0); }
+                100% { transform: translate(0, 0); }
+            }
+            .circle-line:nth-child(1) { transform: rotate(0deg); }
+            .circle-line:nth-child(2) { transform: rotate(90deg); }
+            .circle-line:nth-child(3) { transform: rotate(180deg); }
+            .circle-line:nth-child(4) { transform: rotate(270deg); }
+            .circle:nth-child(1) {
+                width: 8px;
+                height: 8px;
+                top: 50%;
+                left: 50%;
+                margin-top: -4px;
+                margin-left: -4px;
+                border-radius: 4px;
+                animation-delay: -0.3s;
+            }
+            .circle:nth-child(2) {
+                width: 16px;
+                height: 16px;
+                top: 50%;
+                left: 50%;
+                margin-top: -8px;
+                margin-left: -8px;
+                border-radius: 8px;
+                animation-delay: -0.6s;
+            }
+            .circle:nth-child(3) {
+                width: 24px;
+                height: 24px;
+                top: 50%;
+                left: 50%;
+                margin-top: -12px;
+                margin-left: -12px;
+                border-radius: 12px;
+                animation-delay: -0.9s;
+            }
+            .circle {
+                animation: move-animation 2.5s linear infinite;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+            }
+            .circle-blue {
+                background-color:aqua;
+            }
+            .circle-red {
+                background-color: coral;
+            }
+            .circle-green {
+                background-color:forestgreen;
+            }
+            .circle-yellow {
+                background-color:gold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <a href="#">蚂蜂社</a>
+            <a href="#">首页</a>
+            <a href="#">基础闯关班</a>
+            <a href="#">Web 闯关班</a>
+            <a href="#">课程选择</a>
+            <div class="menu">
+                社区
+                <ul>
+                    <li><a href="#" class="menuitem">论坛</a></li>
+                    <li><a href="#" class="menuitem">闯关任务</a></li>
+                </ul>
+            </div>
+            <a href="#">关于我们</a>
+        </div>
+        <div class="anime-loader">
+            <div class="circle-line">
+                <div class="circle circle-blue"></div>
+                <div class="circle circle-blue"></div>
+                <div class="circle circle-blue"></div>
+            </div>
+            <div class="circle-line">
+                <div class="circle circle-green"></div>
+                <div class="circle circle-green"></div>
+                <div class="circle circle-green"></div>
+            </div>
+            <div class="circle-line">
+                <div class="circle circle-red"></div>
+                <div class="circle circle-red"></div>
+                <div class="circle circle-red"></div>
+            </div>
+            <div class="circle-line">
+                <div class="circle circle-yellow"></div>
+                <div class="circle circle-yellow"></div>
+                <div class="circle circle-yellow"></div>
+            </div>
+        </div>
+    </body>
+</html>
