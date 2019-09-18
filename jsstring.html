@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>String of JavaScript</title>
+        <meta charset="utf-8">
+        <script>
+            function fileName() {
+                var fullName = document.forms["fileform"]["filename"].value;
+                var format = fullName.slice(fullName.lastIndexOf(".") + 1, fullName.length);
+                alert(format);
+            }
+            function upperCase() {
+                alert(document.forms["caseform"]["case"].value.toUpperCase());
+            }
+        </script>
+    </head>
+    <body>
+        <form name="fileform">
+            <label for="filename">输入文件名：</label>
+            <input type="text" name="filename">
+            <button onclick="fileName();">Submit</button><span id="fileformat"></span>
+        </form>
+        <form name="caseform">
+            <label for="case">输入英文句子：</label>
+            <input type="text" name="case">
+            <input type="submit" value="submit" onclick="upperCase()"><span id="lowercase"></span>
+        </form>
+    </body>
+</html>
