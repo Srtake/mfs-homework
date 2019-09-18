@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Array of JavaScript</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p>Origin Array: 7, 8, 9, 10, 11</p>
+        <p>Sorted Array: <span id="sorted"></span></p>
+    </body>
+    <script>
+        function sortby(a, b) {
+            a = +a; b = +b;
+            if (a > b) return -1;
+            else if (a == b) return 0;
+            else return 1;
+        }
+        var arr = new Array(7,8,9,10,11);
+        arr.sort(sortby);
+        document.getElementById("sorted").innerHTML = arr.join(", ");
+    </script>
+</html>
