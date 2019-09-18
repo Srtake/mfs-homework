@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Object of JavaScript</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p>对象声明：<code>var person={fname:"Bill",lname:"Gates",age:56};</code></p>
+        <p>对象输出：<span id="object"></span></p>
+    </body>
+    <script>
+            var person = { fname: "Bill", lname: "Gates", age: 56 };
+            var personStr = "";
+            for (x in person) {
+                personStr = personStr + x + ": " + person[x] + "; ";
+            }
+            document.getElementById("object").innerHTML = personStr;
+    </script>
+</html>
