@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event Handling</title>
+        <meta charset='utf-8'>
+        <style>
+            .content {
+                margin: 2rem;
+            }
+            .tab-group {
+                display: flex;
+                margin-bottom: 1rem;
+            }
+            .tab {
+                border: none;
+                line-height: 200%;
+                font-size: 100%;
+                background-color: aqua;
+                margin: 0;
+                padding: 0 1rem;
+            }
+            .tab:hover {
+                background-color: cornflowerblue;
+                color: white;
+            }
+            #award {
+                margin-bottom: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <div class="tab-group">
+                <button class="tab" onclick="tab1Click();">Tab 1</button>
+                <button class="tab" onclick="tab2Click();">Tab 2</button>
+            </div>
+            <div id="gacha">
+                <div id="award">点击 开始 按钮，开始抽奖！</div>
+                <div class="action">
+                    <button id="start">开 始</button>
+                    <button id="stop">停 止</button>
+                </div>
+            </div>
+            <div id="tab2text">
+                <p>This is an example tab.</p>
+            </div>
+        </div>
+        <script>
+            var currAward = ""; var t;
+            document.getElementById("start").addEventListener("click", gacha);
+            document.getElementById("stop").addEventListener("click", gacha);
+            document.getElementById('tab2text').style.display = "none";
+            document.getElementById('gacha').style.display = "block";
+            function tab1Click() {
+                document.getElementById('tab2text').style.display = "none";
+                document.getElementById('gacha').style.display = "block";
+            }
+            function tab2Click() {
+                document.getElementById('gacha').style.display = "none";
+                document.getElementById('tab2text').style.display = "block";
+            }
+            function gachaInterval(isStop) {
+                if (isStop) clearTimeout(t);
+                if (!isStop) {
+                    var randomNum = Math.random() * 100;
+                    if (randomNum == 0) {
+                        currAward = "特等奖";
+                    } else if (randomNum > 0 && randomNum <= 10) {
+                        currAward = "一等奖";
+                    } else if (randomNum > 10 && randomNum <= 40) {
+                        currAward = "二等奖";
+                    } else if (randomNum > 40 && randomNum <= 59) {
+                        currAward = "安慰奖";
+                    } else {
+                        currAward = "三等奖";
+                    }
+                    document.getElementById('award').innerHTML = currAward;
+                    t = setTimeout(gachaInterval, 1);
+                }
+            }
+            function gacha(event) {
+                console.log(event.target.id == 'stop');
+                gachaInterval(event.target.id == 'stop');
+            }
+        </script>
+    </body>
+</html>
