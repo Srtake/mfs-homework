@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pager</title>
+    <meta charset='utf-8'>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .head-pic {
+            background: url(https://work.mafengshe.com/static/imgs/banner.jpg);
+            height: 270px;
+        }
+
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .item {
+            margin: 20px;
+            height: 148px;
+            width: 22%;
+            background-color: #4cd8e0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .no {
+            position: absolute;
+            height: 70px;
+            width: 70px;
+            top: -15px;
+            left: -15px;
+            border-radius: 50%;
+            font-size: 24px;
+            background-color: #20b6d2;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #00474c;
+            color: white;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+        }
+
+        .item-data {
+            position: absolute;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: white;
+        }
+
+        .item-data img {
+            height: 18px;
+            margin: 2px 2px 0 4px;
+        }
+
+        .face {
+            margin-top: 23px;
+            text-align: center;
+        }
+
+        .face img {
+            width: 60px;
+            height: 60px;
+        }
+
+        #pager {
+            margin: 50px 0;
+            text-align: center;
+            height: 30px;
+        }
+
+        #pager a {
+            text-decoration: none;
+            color: black;
+            padding: 5px 10px;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        #pager a.active {
+            background-color: #ee6e73;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='head-pic'></div>
+    <div id='container'></div>
+</body>
+
+<script>
+
+    var oContainer = document.getElementById('container');
+    var itemAmount = 100;
+    var data = [];
+    var currActivePage = 0;
+    function createItem(no, title, clickTimes, replyTimes) {
+        var item = document.createElement('div');
+        item.setAttribute('class', 'item');
+        var html = "<div class='no'>" + no + "</div><div class='title'>" + title + "</div><span class='item-data'><img src='https://work.mafengshe.com/static/imgs/view2.svg'>" + clickTimes + "<img src='https://work.mafengshe.com/static/imgs/huida.svg' style='width:13px;'>" + replyTimes + "</span><div class='face'><img src='https://work.mafengshe.com/static/imgs/平静.svg'></div>"
+        item.innerHTML = html;
+        return item;
+    }
+
+    for (var i = 0; i < itemAmount; i++) {
+        data.push({ no: i, title: "标题" + i, clickTimes: i * 10, replyTimes: i});
+    }
+
+    function createPagerItem(no, isActive) {
+        var item = document.createElement('a');
+        if (isActive) {
+            item.setAttribute('class', 'active');
+        }
+        item.setAttribute('href', '#container');
+        item.innerHTML = no;
+        return item;
+    }
+
+    function createPager(itemAmount) {
+        var pageAmount = itemAmount / 12;
+        var pager = document.createElement('div');
+        var oBody = document.getElementsByTagName('body');
+        oBody[0].appendChild(pager);
+        pager.setAttribute('id', 'pager');
+        pager.appendChild(createPagerItem(1, 1));
+        for (var i = 1; i < pageAmount; i++) {
+            pager.appendChild(createPagerItem(i + 1, 0));
+        }
+    }
+
+    function getData(page) {
+        return data.slice(page * 12, page * 12 + 12);
+    }
+
+    function fillDom(page) {
+        var data = getData(page);
+        var doms = data.map(function (i) {
+            return createItem(i.no, i.title, i.clickTimes, i.replyTimes);
+        });
+        doms.forEach(function (i) {
+            oContainer.appendChild(i);
+        });
+    }
+
+    fillDom(0);
+    createPager(itemAmount);
+
+    var pagers = document.querySelectorAll('#pager a');
+    for (let i = 0; i < pagers.length; i++) {
+        pagers[i].addEventListener("click", function () {
+            while (oContainer.hasChildNodes()) {
+                oContainer.removeChild(oContainer.lastChild);
+            }
+            pagers[currActivePage].removeAttribute('class');
+            currActivePage = i;
+            pagers[i].setAttribute('class', 'active');
+            fillDom(i);
+        })
+    }
+</script>
+
+</html>

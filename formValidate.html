@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Validation</title>
+        <meta charset='utf-8'>
+    </head>
+    <body>
+        <form id="signup" action="#" target="_blank" onsubmit="return onSignupFormSubmit()">
+            <p id="signup-error" style="color:red"></p>
+            <p>
+             用户名:
+             <input id="username" type="text" name="username">
+            </p>
+            <p>
+             口令:
+             <input type="password" id="password" name="password">
+            </p>
+            <p>
+             重复口令:
+             <input type="password" id="password-2">
+            </p>
+            <p>
+             <button type="submit">提交</button>
+             <button type="reset">重置</button>
+            </p>
+            </form>
+    </body>
+    <script>
+        function onSignupFormSubmit() {
+            // Check username
+            var username = document.forms['signup']['username'].value;
+            if (username.search(/[a-z]|[A-Z]^\w$/) == -1 || username.length < 6 || username.length > 16) {
+                document.getElementById('signup-error').innerHTML = '用户名需要以字母开头，6-16个英文字符，数字或下划线';
+            } else {
+                // Check password
+                var password = document.forms['signup']['password'].value;
+                if (password.search(/[^a-zA-Z0-9_!@#\$%\^&\*+\-\/=<>\?':;]/) != -1 || password.length < 8 || password.length > 20) {
+                    document.getElementById('signup-error').innerHTML = '口令需要 8-20 位字母、数字、下划线或特殊符号';
+                } else {
+                    // Check duplicate password
+                    var password2 = document.forms['signup']['password-2'].value;
+                    if (password2 != password) {
+                        document.getElementById('signup-error').innerHTML = '重复口令需要和口令相同！';
+                    } else {
+                        alert('输入信息合法。');
+                    }
+                }
+            }
+        }
+    </script>
+</html>
