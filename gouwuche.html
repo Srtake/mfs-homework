@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>购物车</title>
+    <meta charset='utf-8'>
+    <style>
+        table th {
+            background-color: aquamarine;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        table .goods,
+        .amount,
+        .delete-unit {
+            background-color: darksalmon;
+        }
+
+        .add,
+        .delete {
+            border: none;
+            background-color: brown;
+            color: white;
+        }
+
+        .add:hover,
+        .delete:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>添加您想要的商品！</h2>
+    <table>
+        <script>
+            for (var i = 0; i < 10; i++) {
+                document.write("<tr><th>" + (i + 1) + "</th><th class='goods'><button class='add'>加购</button></th></tr>");
+            }
+        </script>
+    </table>
+    <hr />
+    <h2>购物车</h2>
+    <table>
+        <tr>
+            <script>
+                for (var i = 0; i < 10; i++) {
+                    document.write("<th>" + (i + 1) + "</th>");
+                }
+            </script>
+        </tr>
+        <tr>
+            <script>
+                for (var i = 0; i < 10; i++) {
+                    document.write("<th class='amount'>0</th>");
+                }
+            </script>
+        </tr>
+        <tr>
+            <script>
+                for (var i = 0; i < 10; i++) {
+                    document.write("<th class='delete-unit'><button class='delete'>删除</button></th>");
+                }
+            </script>
+        </tr>
+    </table>
+    <script>
+        var addButtons = document.querySelectorAll('.add');
+        var deleteButtons = document.querySelectorAll('.delete');
+        var amountLabels = document.querySelectorAll('.amount');
+        var gouwucheStorage = localStorage.getItem('gouwuche');
+        function updateAmountLabels() {
+            for (var i = 0; i < amountLabels.length; i++) {
+                amountLabels[i].innerHTML = 0;
+            }
+            for (var i = 0; i < gouwucheStorage.length; i++) {
+                var label = amountLabels[gouwucheStorage[i]];
+                label.innerHTML = (parseInt(label.innerHTML) + 1).toString();
+            }
+        }
+        if (gouwucheStorage) {
+            updateAmountLabels();
+        } else {
+            gouwucheStorage = '';
+        }
+        for (let i = 0; i < addButtons.length; i++) {
+            addButtons[i].addEventListener('click', function () {
+                localStorage.setItem('gouwuche', gouwucheStorage + i.toString());
+                gouwucheStorage = localStorage.getItem('gouwuche');
+                updateAmountLabels();
+            });
+        }
+        for (let i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener('click', function() {
+                gouwucheStorage = gouwucheStorage.replace(i.toString(), '');
+                localStorage.setItem('gouwuche', gouwucheStorage);
+                updateAmountLabels();
+            });
+        }
+    </script>
+</body>
+
+</html>
