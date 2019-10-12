@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kuayu</title>
+    <meta charset='utf-8'>
+</head>
+
+<body>
+    <p id='text'>Text</p>
+    <iframe src='http://www.test1.com/ajax.html'></iframe>
+    <script>
+        document.domain = 'test1.com';
+        console.log(window.frames.document.getElementById('text'));
+    </script>
+</body>
+
+</html>

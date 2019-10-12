@@ -1,0 +1,1 @@
+fetchData({"data": "hello json"})
