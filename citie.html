@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <title>Document</title>
+    <style>
+        .top {
+            height: 40px;
+        }
+        .nav {
+            width: 804px;
+            height: 40px;
+            background-color: slategray;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+        .body {
+            width: 800px;
+            height: 2000px;
+            background-color:antiquewhite;
+            border: 2px solid slategray;
+            margin: 0 auto;
+        }
+        .fixed {
+            position: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="top"></div>
+    <div class="nav"></div>
+    <div class="body"></div>
+    <script>
+        window.onscroll = function() {
+            if (window.scrollY > 40) {
+                $(".nav").addClass("fixed");
+            } else {
+                $(".nav").removeClass("fixed");
+            }
+        }
+    </script>
+</body>
+</html>
