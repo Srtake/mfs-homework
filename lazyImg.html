@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+    <style>
+        .a {
+            height: 1000px;
+        }
+
+        img {
+            height: 128px;
+            width: 128px;
+            background: skyblue;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="a"></div>
+    <div class="a"></div>
+    <img data-src="https://kongzhu.me/img/icon-example.png" src='' alt="">
+    <div class="a"></div>
+    <div class="a"></div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+
+        function isShow($node) {
+            var windowH = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var nodeOT = $node.offset().top;
+            var nodeH = $node.height();
+            return nodeOT <= scrollTop + windowH && nodeOT + nodeH >= scrollTop;
+        }
+
+
+        function LazyImg($node) {
+            window.onscroll = function () {
+                if (isShow($node)) {
+                    $node.attr('src', $node.data('src'));
+                }
+            }
+        }
+
+        new LazyImg($("img"));
+    </script>
+</body>
+
+</html>
