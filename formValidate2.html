@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>注册验证</title>
+    <meta charset='utf-8'>
+</head>
+
+<body>
+    <script>
+        function usernameChange() {
+
+            var input = document.getElementById("username");
+            if (input.validity["patternMismatch"]) {
+                $('#username-valid').html("<span style='color: red'>需要以字母开头，6-18个字符</span>");
+                return;
+            }
+
+            var data = new FormData();
+            data.append("username", input.value);
+
+            $.ajax({
+                type: "post",
+                url: "formValidate2-response.php",
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    $('#username-valid').html(res);
+                },
+            });
+        }
+        function passwordChange() {
+            var input = document.getElementById("password");
+            if (input.validity["patternMismatch"]) {
+                $("#password-valid").html("<span style='color: red'>6-18个字符</span>");
+            } else {
+                $("#password-valid").html("<span style='color: green'>可用</span>");
+            }
+        }
+        function repPwdChange() {
+            var rep = document.getElementById("rep-pwd");
+            var pwd = document.getElementById("password");
+            if (rep.value != pwd.value) {
+                $("#rep-pwd-valid").html("<span style='color: red'>两次密码不一致</span>");
+            } else {
+                $("#rep-pwd-valid").html("<span style='color: green'>可用</span>");
+            }
+        }
+    </script>
+    <form>
+        username: <input type="text" id="username" oninput="usernameChange()" pattern="^[a-zA-Z_]\w{5,13}$">
+        <span id='username-valid'></span><br>
+        password: <input type="password" id="password" oninput="passwordChange()" pattern="^.{6,18}$">
+        <span id='password-valid'></span><br>
+        repeat password: <input type="password" id="rep-pwd" oninput="repPwdChange()">
+        <span id='rep-pwd-valid'></span><br>
+    </form>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+</body>
+
+</html>
