@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>省市区联动</title>
+    <meta charset='utf-8'>
+</head>
+
+<body>
+    <script>
+        function sendData($mode) {
+
+            var data = new FormData();
+            data.append("mode", $mode);
+            data.append("region", $('#region option:selected').attr('value'));
+            data.append("state", $('#state option:selected').attr('value'));
+            data.append("city", $('#city option:selected').attr('value'));
+            $.ajax({
+                type: "post",
+                url: "region-response.php",
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (res) {
+                    if ($mode == 0) {
+                        $('#region').html(res);
+                    } else if ($mode == 1) {
+                        $('#state').html(res);
+                    } else if ($mode == 2) {
+                        $('#city').html(res);
+                    }
+                },
+            });
+        }
+
+        window.onload = function () {
+            sendData(0);
+        }
+
+    </script>
+    <form>
+        <select id='region' onchange="sendData(1);">
+            <option>请选择...</option>
+        </select>
+        <select id='state' onchange="sendData(2);">
+            <option>请选择...</option>
+        </select>
+        <select id='city'>
+            <option>请选择...</option>
+        </select>
+    </form>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+</body>
+
+</html>
