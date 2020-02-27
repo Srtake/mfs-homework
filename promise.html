@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id='1' class='unitbox'></div>
+    <div id='2' class='unitbox'></div>
+    <div id='3' class='unitbox'></div>
+    <div id='4' class='unitbox'></div>
+    <div id='5' class='unitbox'></div>
+    <div id='6' class='unitbox'></div>
+    <div id='7' class='unitbox'></div>
+    <div id='8' class='unitbox'></div>
+    <div id='9' class='unitbox'></div>
+    <div id='10' class='unitbox'></div>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        function findMinIndex(arr) {
+            var minIndex = 0;
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] < arr[minIndex])
+                    minIndex = i;
+            }
+            return minIndex;
+        }
+
+        function sendToAPI() {
+            const promise = new Promise(function (resolve, reject) {
+                object = {};
+                object["mode"] = 0;
+                object["record-count"] = 1;
+                const handler = function () {
+                    if (this.readyState !== 4) {
+                        return;
+                    }
+                    if (this.status === 200) {
+                        resolve(this.response);
+                    } else {
+                        reject(new Error(this.statusText));
+                    }
+                };
+                const client = new XMLHttpRequest();
+                client.open("POST", "https://kongzhu.me/lovelive/livelog/res-show.php");
+                client.onreadystatechange = handler;
+                // client.responseType = "json";
+                client.setRequestHeader("Accept", "application/json");
+                client.send(JSON.stringify(object));
+            });
+            return promise;
+        }
+
+        // Serialize
+        sendToAPI()
+            .then(data => { console.log(1); $('#1').html(data); return sendToAPI(); })
+            .then(data => { console.log(2); $('#2').html(data); return sendToAPI(); })
+            .then(data => { console.log(3); $('#3').html(data); return sendToAPI(); })
+            .then(data => { console.log(4); $('#4').html(data); return sendToAPI(); })
+            .then(data => { console.log(5); $('#5').html(data); return sendToAPI(); })
+            .then(data => { console.log(6); $('#6').html(data); return sendToAPI(); })
+            .then(data => { console.log(7); $('#7').html(data); return sendToAPI(); })
+            .then(data => { console.log(8); $('#8').html(data); return sendToAPI(); })
+            .then(data => { console.log(9); $('#9').html(data); return sendToAPI(); })
+            .then(data => { console.log(10); $('#10').html(data); return sendToAPI(); })
+
+        // Parallelize
+        const promises = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(id => sendToAPI().then(data => { console.log(id); $('#' + id).html(data); }));
+        setTimeout(() => { Promise.all(promises).then(resolve => { console.log('finished'); }).catch(error => { console.log('error'); }); }, 1000);
+    </script>
+</body>
+
+</html>
